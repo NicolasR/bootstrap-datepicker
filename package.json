@@ -1,7 +1,7 @@
 {
   "name": "bootstrap-datepicker",
   "description": "A datepicker for Bootstrap",
-  "version": "1.10.0",
+  "version": "1.9.1",
   "license": "Apache-2.0",
   "keywords": [
     "datepicker",
@@ -18,6 +18,7 @@
   "homepage": "https://github.com/uxsolutions/bootstrap-datepicker",
   "author": "Andrew Rowls <eternicode@gmail.com>",
   "scripts": {
+    "dist": "grunt dist",
     "test": "grunt test",
     "screenshots": "node ./docs/screenshots.js"
   },

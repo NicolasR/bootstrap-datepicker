@@ -493,7 +493,7 @@
 			this.place();
 			this.picker.show();
 			this._attachSecondaryEvents();
-			this._trigger('show');
+			this._trigger('bdp.bdp.show');
 			if ((window.navigator.msMaxTouchPoints || 'ontouchstart' in document) && this.o.disableTouchKeyboard) {
 				$(this.element).blur();
 			}
@@ -510,7 +510,7 @@
 
 			if (this.o.forceParse && this.inputField.val())
 				this.setValue();
-			this._trigger('hide');
+			this._trigger('bdp.hide');
 			return this;
 		},
 
@@ -589,7 +589,7 @@
 
 		clearDates: function(){
 			this.inputField.val('');
-			this._trigger('changeDate');
+			this._trigger('bdp.changeDate');
 			this.update();
 			if (this.o.autoclose) {
 				this.hide();
@@ -599,7 +599,7 @@
 		setDates: function(){
 			var args = Array.isArray(arguments[0]) ? arguments[0] : arguments;
 			this.update.apply(this, args);
-			this._trigger('changeDate');
+			this._trigger('bdp.changeDate');
 			this.setValue();
 			return this;
 		},
@@ -817,12 +817,12 @@
 			else if (this.dates.length){
 				// setting date by typing
 				if (String(oldDates) !== String(this.dates) && fromArgs) {
-					this._trigger('changeDate');
+					this._trigger('bdp.changeDate');
 					this.element.change();
 				}
 			}
 			if (!this.dates.length && oldDates.length) {
-				this._trigger('clearDate');
+				this._trigger('bdp.clearDate');
 				this.element.change();
 			}
 
@@ -1252,11 +1252,11 @@
 
 			if (this.o.updateViewDate) {
 				if (date.getUTCFullYear() !== this.viewDate.getUTCFullYear()) {
-					this._trigger('changeYear', this.viewDate);
+					this._trigger('bdp.changeYear', this.viewDate);
 				}
 
 				if (date.getUTCMonth() !== this.viewDate.getUTCMonth()) {
-					this._trigger('changeMonth', this.viewDate);
+					this._trigger('bdp.changeMonth', this.viewDate);
 				}
 			}
 			this._setDate(date);
@@ -1306,9 +1306,9 @@
 			this.fill();
 			this.setValue();
 			if (!which || which !== 'view') {
-				this._trigger('changeDate');
+				this._trigger('bdp.changeDate');
 			}
-			this.inputField.trigger('change');
+			this.inputField.trigger('bdp.change');
 			if (this.o.autoclose && (!which || which === 'date')){
 				this.hide();
 			}
@@ -1444,12 +1444,12 @@
   						newViewDate = this.moveAvailableDate(focusDate, dir, 'moveYear');
 
   						if (newViewDate)
-  							this._trigger('changeYear', this.viewDate);
+  							this._trigger('bdp.changeYear', this.viewDate);
   					} else if (e.shiftKey){
   						newViewDate = this.moveAvailableDate(focusDate, dir, 'moveMonth');
 
   						if (newViewDate)
-  							this._trigger('changeMonth', this.viewDate);
+  							this._trigger('bdp.changeMonth', this.viewDate);
   					} else if (e.keyCode === 37 || e.keyCode === 39){
   						newViewDate = this.moveAvailableDate(focusDate, dir, 'moveDay');
   					} else if (!this.weekOfDateIsDisabled(focusDate)){
@@ -1501,10 +1501,10 @@
 			}
 			if (dateChanged){
 				if (this.dates.length)
-					this._trigger('changeDate');
+					this._trigger('bdp.changeDate');
 				else
-					this._trigger('clearDate');
-				this.inputField.trigger('change');
+					this._trigger('bdp.clearDate');
+				this.inputField.trigger('bdp.change');
 			}
 		},
 
@@ -1516,7 +1516,7 @@
 				.filter('.datepicker-' + DPGlobal.viewModes[this.viewMode].clsName)
 					.show();
 			this.updateNavArrows();
-      this._trigger('changeViewMode', new Date(this.viewDate));
+      this._trigger('bdp.changeViewMode', new Date(this.viewDate));
 		}
 	};
 
@@ -1761,30 +1761,30 @@
 			{
 				names: ['days', 'month'],
 				clsName: 'days',
-				e: 'changeMonth'
+				e: 'bdp.changeMonth'
 			},
 			{
 				names: ['months', 'year'],
 				clsName: 'months',
-				e: 'changeYear',
+				e: 'bdp.changeYear',
 				navStep: 1
 			},
 			{
 				names: ['years', 'decade'],
 				clsName: 'years',
-				e: 'changeDecade',
+				e: 'bdp.changeDecade',
 				navStep: 10
 			},
 			{
 				names: ['decades', 'century'],
 				clsName: 'decades',
-				e: 'changeCentury',
+				e: 'bdp.changeCentury',
 				navStep: 100
 			},
 			{
 				names: ['centuries', 'millennium'],
 				clsName: 'centuries',
-				e: 'changeMillennium',
+				e: 'bdp.changeMillennium',
 				navStep: 1000
 			}
 		],
@@ -1977,35 +1977,35 @@
 	};
 	DPGlobal.template = '<div class="datepicker">'+
 							'<div class="datepicker-days">'+
-								'<table class="table-condensed">'+
+								'<table class="table-condensed table-sm">'+
 									DPGlobal.headTemplate+
 									'<tbody></tbody>'+
 									DPGlobal.footTemplate+
 								'</table>'+
 							'</div>'+
 							'<div class="datepicker-months">'+
-								'<table class="table-condensed">'+
+								'<table class="table-condensed table-sm">'+
 									DPGlobal.headTemplate+
 									DPGlobal.contTemplate+
 									DPGlobal.footTemplate+
 								'</table>'+
 							'</div>'+
 							'<div class="datepicker-years">'+
-								'<table class="table-condensed">'+
+								'<table class="table-condensed table-sm">'+
 									DPGlobal.headTemplate+
 									DPGlobal.contTemplate+
 									DPGlobal.footTemplate+
 								'</table>'+
 							'</div>'+
 							'<div class="datepicker-decades">'+
-								'<table class="table-condensed">'+
+								'<table class="table-condensed table-sm">'+
 									DPGlobal.headTemplate+
 									DPGlobal.contTemplate+
 									DPGlobal.footTemplate+
 								'</table>'+
 							'</div>'+
 							'<div class="datepicker-centuries">'+
-								'<table class="table-condensed">'+
+								'<table class="table-condensed table-sm">'+
 									DPGlobal.headTemplate+
 									DPGlobal.contTemplate+
 									DPGlobal.footTemplate+

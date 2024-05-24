@@ -1,6 +1,15 @@
 Changelog
 =========
 
+1.9.1
+-----
+
+## Features
+ * Added Bootstrap 4 Support
+
+## Bugfix
+ * Change event names to prevent jQuery default event launch
+
 1.9.0
 -----
 

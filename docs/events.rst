@@ -15,49 +15,49 @@ Datepicker triggers a number of events in certain circumstances.  All events hav
 * ``format([ix], [format])``: a function to make formatting ``date`` easier.  ``ix`` can be the index of a Date in the ``dates`` array to format; if absent, the last date selected will be used.  ``format`` can be any format string that datepicker supports; if absent, the format set on the datepicker will be used.  Both arguments are optional.
 
 
-show
+bdp.show
 ----
 
 Fired when the date picker is displayed.
 
 
-hide
+bdp.hide
 ----
 
 Fired when the date picker is hidden.
 
 
-clearDate
+bdp.clearDate
 ---------
 
 Fired when the date is cleared, normally when the "clear" button (enabled with the ``clearBtn`` option) is pressed.
 
 
-changeDate
+bdp.changeDate
 ----------
 
 Fired when the date is changed.
 
 
-changeMonth
+bdp.changeMonth
 -----------
 
 Fired when the *view* month is changed from year view.
 
 
-changeYear
+bdp.changeYear
 ----------
 
 Fired when the *view* year is changed from decade view.
 
 
-changeDecade
+bdp.changeDecade
 ------------
 
 Fired when the *view* decade is changed from century view.
 
 
-changeCentury
+bdp.changeCentury
 -------------
 
 Fired when the *view* century is changed from millennium view.
