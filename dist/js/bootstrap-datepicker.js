@@ -480,7 +480,7 @@
 			this.place();
 			this.picker.show();
 			this._attachSecondaryEvents();
-			this._trigger('bdp.bdp.show');
+			this._trigger('bdp.show');
 			if ((window.navigator.msMaxTouchPoints || 'ontouchstart' in document) && this.o.disableTouchKeyboard) {
 				$(this.element).blur();
 			}
